@@ -1,0 +1,7 @@
+"0","pl5 <- ggplot(df_unq, aes(x=unique_word_count, fill=TRUE_SENTIMENT)) + "
+"0","  geom_histogram(alpha=0.5, position=""identity"") + theme_minimal() + "
+"0","  ggtitle(""Histogram of unique word count by sentiment class"") + "
+"0","  ylab(""Frequency"") + "
+"0","  xlab(""Count of Unique Words"")"
+"0",""
+"0","ggplotly(pl5)"

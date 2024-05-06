@@ -1,0 +1,7 @@
+"0","pl3 <- ggplot(df, aes(x=TRUE_SENTIMENT, y=num_past_verb, color=TRUE_SENTIMENT)) + "
+"0","  geom_point(alpha=0.8) + "
+"0","  ggtitle(""Scatter plot of number of past tense verbs by each sentiment class"") + "
+"0","  ylab(""Number of Past Tense Verbs"") + "
+"0","  xlab(""Sentiment Class"")"
+"0",""
+"0","ggplotly(pl3)"

@@ -1,0 +1,7 @@
+"0","pl <- ggplot(df, aes(x=TRUE_SENTIMENT, y=avg_len_token, color=TRUE_SENTIMENT)) + "
+"0","  geom_point(alpha=0.8) + "
+"0","  ggtitle(""Scatter plot of average length of token by each sentiment class"") + "
+"0","  ylab(""Average Length of Token"") + "
+"0","  xlab(""Sentiment Class"")"
+"0","  "
+"0","ggplotly(pl)"

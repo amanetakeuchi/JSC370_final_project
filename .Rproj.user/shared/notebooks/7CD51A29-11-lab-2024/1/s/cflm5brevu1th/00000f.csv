@@ -1,0 +1,8 @@
+"0",""
+"0","sb_locs <- read_csv(""starbucks-locations.csv"", show_col_types=FALSE)"
+"0",""
+"0","sb_nutr <- read_csv(""starbucks-menu-nutrition.csv"", show_col_types=FALSE)"
+"0",""
+"0","usa_pop <- read_csv(""us_state_pop.csv"", show_col_types=FALSE)"
+"0",""
+"0","usa_states<-read_csv(""states.csv"", show_col_types=FALSE)"

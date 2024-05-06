@@ -1,0 +1,14 @@
+"0","sb_nutr |>"
+"0","  plot_ly(x = ~Calories,"
+"0","          y = ~`Carb. (g)`,"
+"0","          type = ""scatter"","
+"0","          mode = ""markers"","
+"0","          color = ~Category)"
+"2","Warning: minimal value for n is 3, returning requested palette with 3 different levels
+"
+"2","Warning: minimal value for n is 3, returning requested palette with 3 different levels
+"
+"2","Warning: minimal value for n is 3, returning requested palette with 3 different levels
+"
+"2","Warning: minimal value for n is 3, returning requested palette with 3 different levels
+"

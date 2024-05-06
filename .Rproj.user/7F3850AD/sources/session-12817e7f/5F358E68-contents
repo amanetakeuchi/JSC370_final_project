@@ -1,19 +1,22 @@
 ---
-title: "JSC370 Final Project Interative Visualization"
-author: "Amane Takeuchi"
+title: "Interactive Visualization"
+author: ""
 output: 
     html_document:
         toc: TRUE
         toc_float: TRUE
 ---
 
-This is my JSC370 Final Project Website.
-
 ```{r message=FALSE, echo=FALSE, warning=FALSE}
 library(tidyverse)
 library(plotly)
 library(widgetframe)
 library(tidytext)
+library(wordcloud)
+library(tm)
+library(topicmodels)
+library(NLP)
+library(RColorBrewer)
 ```
 
 ```{r, echo=FALSE, warning=FALSE, include=FALSE}
@@ -21,39 +24,92 @@ library(tidytext)
 df <- read_csv("author_sentiment.csv", show_col_types=FALSE)
 ```
 
-## 1. Showcasing a single plot
+## 1. Word Count in the Textual Data
 
 ```{r echo=FALSE}
+# Customize stopwords
+stopwords2 <-c(stopwords("english"), "also", "using", "use", "used", "s", "t")
+
 p3<- df |>
+  select(text_cleaned) |>
   unnest_tokens(word, text_cleaned, token="words") |>
-  count(word, sort=T) |>
+  group_by(word) |>
+  summarise(word_frequency=n()) |>
+  arrange(across(word_frequency, desc)) |>
+  filter(!(word %in% stopwords2)) |>
+  filter(!(grepl("[[:digit:]]+", word))) |>
   head(20) |>
-  ggplot(aes(x=word, y=n))+
+  ggplot(aes(reorder(word, -word_frequency), word_frequency)) +
   geom_col()+
-  coord_flip()
+  coord_flip() +
+  ggtitle("Top 20 common words in the document") + 
+  ylab("Frequency of words") + 
+  xlab("Words") + theme_minimal()
+
 ggplotly(p3)
 ```
 
 
-## 2. Showcasing multiple plots {.tabset}
+## 2. Multiple Scatter Plots for Differnt Features {.tabset}
 
 ### Figure 1
 
 ```{r echo=FALSE}
-pl <- ggplot(sb_locs_state, aes(x=population, y=n_stores, color=state)) + 
-  geom_point(alpha=0.8)
+pl <- ggplot(df, aes(x=TRUE_SENTIMENT, y=avg_len_token, color=TRUE_SENTIMENT)) + 
+  geom_point(alpha=0.8) + 
+  ggtitle("Scatter plot of average length of token by each sentiment class") + 
+  ylab("Average Length of Token") + 
+  xlab("Sentiment Class")
+  
 ggplotly(pl)
 ```
 
 ### Figure 2
 
 ```{r echo=FALSE}
-pl2 <- ggplot(sb_nutr, aes(x=Calories, fill=Category)) + 
-  geom_histogram(alpha=0.5, position="identity") + theme_minimal()
+pl2 <- ggplot(df, aes(x=TRUE_SENTIMENT, y=num_proper_noun, color=TRUE_SENTIMENT)) + 
+  geom_point(alpha=0.8) + 
+  ggtitle("Scatter plot of number of proper nouns by each sentiment class") + 
+  ylab("Number of Proper Nouns") + 
+  xlab("Sentiment Class")
 
 ggplotly(pl2)
 ```
+### Figure 3
 
-{-}
+```{r echo=FALSE}
+pl3 <- ggplot(df, aes(x=TRUE_SENTIMENT, y=num_past_verb, color=TRUE_SENTIMENT)) + 
+  geom_point(alpha=0.8) + 
+  ggtitle("Scatter plot of number of past tense verbs by each sentiment class") + 
+  ylab("Number of Past Tense Verbs") + 
+  xlab("Sentiment Class")
 
+ggplotly(pl3)
+```
 
+### Figure 4
+
+```{r echo=FALSE}
+pl4 <- ggplot(df, aes(x=TRUE_SENTIMENT, y=num_comma, color=TRUE_SENTIMENT)) + 
+  geom_point(alpha=0.8) + 
+  ggtitle("Scatter plot of number of commas by each sentiment class") + 
+  ylab("Number of Commas") + 
+  xlab("Sentiment Class")
+
+ggplotly(pl4)
+```
+
+## 3. Number of Unique Words
+```{r, echo=FALSE, warning=FALSE, include=FALSE}
+df_unq <- read_csv("author_sentiment_unique.csv", show_col_types=FALSE)
+```
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+pl5 <- ggplot(df_unq, aes(x=unique_word_count, fill=TRUE_SENTIMENT)) + 
+  geom_histogram(alpha=0.5, position="identity") + theme_minimal() + 
+  ggtitle("Histogram of unique word count by sentiment class") + 
+  ylab("Frequency") + 
+  xlab("Count of Unique Words")
+
+ggplotly(pl5)
+```

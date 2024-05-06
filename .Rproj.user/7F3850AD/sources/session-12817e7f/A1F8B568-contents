@@ -1,13 +1,15 @@
 name: "JSC370 Final Project"
 output_dir: "."
 navbar:
-  title: "JSC370 Final Project: Analysing Author Sentiment of Large Language Model using XGBoost Classifier"
+  title: "JSC370 Final Project"
   left:
-    - text: "Home"
+    - text: "Home" 
+      href: project_description.html
+    - text: "Interactive Visualization"
       href: index.html
   right:
     - icon: fa-github fa-lg
-      href: https://github.com/amanetakeuchi
+      href: https://github.com/amanetakeuchi/JSC370_final_project
     - text: "JSC370 Home"
       href: https://jsc370.github.io/JSC370-2024/
 output:
