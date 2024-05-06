@@ -1,0 +1,2 @@
+"0","# source(""process_starbucks_data.R"")"
+"0","df <- read_csv(""author_sentiment.csv"", show_col_types=FALSE)"
