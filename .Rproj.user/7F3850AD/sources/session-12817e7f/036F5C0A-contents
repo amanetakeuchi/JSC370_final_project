@@ -1,2 +1,2 @@
 ## JSC370 Final Project Website
-The link to the website: file:///C:/Users/amane/Downloads/JSC370_tutorials/JSC370_final_project/project_description.html 
+The link to the website: https://amanetakeuchi.github.io/JSC370_final_project/
