@@ -25,6 +25,7 @@ df <- read_csv("author_sentiment.csv", show_col_types=FALSE)
 ```
 
 ## 1. Word Count in the Textual Data
+This plot describes the most common 20 words throughout the textual data after omitting stopwords. Notice few of the most common words are “Trump”, “new”, and “President”. This is potentially because many news articles retrieved for this dataset were written about the new U.S. president becoming Donald Trump, at the time. This depicts many entities in the dataset had topics regarding the new president, Donald Trump or U.S. politics.
 
 ```{r echo=FALSE}
 # Customize stopwords
@@ -49,8 +50,8 @@ p3<- df |>
 ggplotly(p3)
 ```
 
-
 ## 2. Multiple Scatter Plots for Differnt Features {.tabset}
+These are the scatter plots of some features retrieved from parts-of-speech tagging. Although there is not much difference in the average length of token for each sentiment class, for the number of commas, the neutral class has a relatively high number of commas compared to other classes. Further, the number of past tense verbs is sparse for the neutral class, while the positive and negative classes are dense, around 0 to 100 counts. Similarly, the number of proper nouns followed a similar trend: the neutral class is sparse, the negative class is dense around 0 to 200, and the positive class is dense around 0 to 300.
 
 ### Figure 1
 
@@ -100,6 +101,8 @@ ggplotly(pl4)
 ```
 
 ## 3. Number of Unique Words
+This is a histogram of the unique word count by each sentiment class. Notice that the negative sentient class has a relatively low frequency of unique word count, whereas the neutral and positive classes have a relatively high frequency of unique word count. One of the reasons why the negative class has less distributed data is because it was over-sampled with replacement to account for the class imbalance in the original dataset. Although the class imbalance was fixed by over-sampling the negative sentiment class, this might have later caused the machine learning models to be more biased when making decisions regarding negative sentiment.
+
 ```{r, echo=FALSE, warning=FALSE, include=FALSE}
 df_unq <- read_csv("author_sentiment_unique.csv", show_col_types=FALSE)
 ```
