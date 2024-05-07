@@ -7,4 +7,4 @@ With the recent remarkable development in Natural Language Processing (NLP), muc
 The link to the website: https://amanetakeuchi.github.io/JSC370_final_project/
 
 ### Report 
-TODO: insert link to the report
+Link to report: https://github.com/amanetakeuchi/JSC370_final_project/blob/main/JSC370_Final_Project_Report.pdf
