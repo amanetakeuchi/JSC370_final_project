@@ -13,3 +13,6 @@ The link to the website: https://amanetakeuchi.github.io/JSC370_final_project/
 
 ### Report 
 Link to report: https://github.com/amanetakeuchi/JSC370_final_project/blob/main/JSC370_Final_Project_Report.pdf
+
+### Video Presentation
+Link to video: https://play.library.utoronto.ca/watch/38b20553a297dc77996eb9e27ec21236
